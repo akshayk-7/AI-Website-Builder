@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import type { Project } from '../types';
-import { Loader2Icon, PlusIcon } from 'lucide-react';
+import { Loader2Icon, PlusIcon, Scale } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { dummyProjects } from '../assets/assets';
 
 const MyProjects = () => {
   const [loading, setLoading] = useState(true);
@@ -9,6 +10,7 @@ const MyProjects = () => {
   const navigate = useNavigate()
 
   const fetchProjects = async () =>{
+    setProjects(dummyProjects)
     // hiding the loading 
     setTimeout(()=>{
       setLoading(false)
@@ -30,10 +32,35 @@ const MyProjects = () => {
           <div className='py-10 min-h-[80vh]'>
             <div className='flex items-center justify-between mb-12'>
               <h1 className='text-2xl font-medium text-white'>My Projects</h1>
-              <button onClick={()=> navigate('/')} className='flex item-center gap-2 text-white px-3 sm:px-6 py-1 sm:py-2 rounded bg-liner-to-br from-indigo-500 to-indigo-600 hover:opacity-90 active:scale-95 trasition-all'>
-              
-                <PlusIcon size={18} /> Create New</button>
+              <button onClick={()=> navigate('/')} className='flex items-center gap-2 text-white px-3 sm:px-6 py-1 sm:py-2 rounded bg-gradient-to-br from-indigo-500 to-indigo-600 hover:opacity-90 active:scale-95 trasition-all'>
+                <PlusIcon size={18}/> Create New
+              </button>
             </div>
+
+            //cards
+            <div className='flex flex-wrap gap-3.5'>
+                {projects.map((project) =>(
+                  <div key={project.id} className='relative group w-72 max-sm:mx-auto cursor-pointer bg-gray-900/60 border border-gray-700 rounded-lg overflow-hidden shadow-md group hover:shadow-indigo-700/30 hover:border-indigo-800/80 trasition-all duration-300'>
+                      {/* Desktop like mini preview */}
+                      <div className='relative w-full h-40 bg-gray-900 overflow-hidden border-b border-gray-800'>
+                        {project.current_code ? (
+                          <iframe 
+                          srcDoc={project.current_code}
+                          className='absolute top-0 left-0 w-[1200px] h-[800px] origin-top-left pointer-events-none'
+                          sandbox='allow-scripts allow-same-origin'
+                          style={{transform:'scale(0.25)'}}/>
+                        )
+                      : (
+                        <div className='flex items-center justify-center h-full text-gray-500'>
+                          <p>No Preview</p>
+                        </div>
+                      )}
+
+                      </div>
+                  </div>
+                ))}
+            </div>
+
 
           </div>
         ) : (
@@ -43,6 +70,8 @@ const MyProjects = () => {
                 Create New
               </button>
           </div>
+
+          
         )}
       </div>
     </>
