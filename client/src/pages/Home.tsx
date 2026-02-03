@@ -48,7 +48,14 @@ const Home = () => {
           )}
         </button>
       </form>
-
+           <div className="grid grid-cols-2 gap-4 mt-8 text-slate-400">
+                <p className="cursor-pointer">How do I write a resume or cover letter?</p>
+                <p className="cursor-pointer">How do I improve my writing skills?</p>
+                <div className="w-full h-px bg-gray-400/50"></div>
+                <div className="w-full h-px bg-gray-400/50"></div>
+                <p className="cursor-pointer">Can you translate something for me?</p>
+                <p className="cursor-pointer">How can I be more productive?</p>
+            </div>
       <div className="flex flex-wrap items-center justify-center gap-16 md:gap-20 mx-auto mt-16">
         <img className="max-w-28 md:max-w-32" src="https://saasly.prebuiltui.com/assets/companies-logo/framer.svg" alt="" />
         <img className="max-w-28 md:max-w-32" src="https://saasly.prebuiltui.com/assets/companies-logo/huawei.svg" alt="" />
