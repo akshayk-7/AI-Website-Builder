@@ -1,5 +1,6 @@
 import React from 'react'
 import { appPlans } from '../assets/assets';
+import Footer from '../components/Footer';
 
 interface Plan{
   id: string;
@@ -14,10 +15,16 @@ interface Plan{
 const Pricing = () => {
   const [plans] = React.useState<Plan[]>(appPlans)
 
+  const handlePurchase = async (planId: string) =>{
+
+  }
 
   return (
     <>
+    
       <div className='w-full max-w-5xl mx-auto z-20 max-md:px-4 min-h-[80vh]'>
+            <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/refs/heads/main/assets/hero/bg-gradient-2.png" className="absolute inset-0 -z-10 size-full opacity" alt="" />
+
         <div className='text-center mt-16'>
           <h2 className='text-gray-100 text-3xl font-medium'>Choose Your Plan</h2>
           <p className='text-gray-400 text-sm max-w-md mx-auto mt-2'>Start for free and scale up as you grow. Find the perfect plan for your content creation needs.</p>
@@ -54,7 +61,10 @@ const Pricing = () => {
                         ))}
                     </div>
           </div>
+          <p className='mx-auto text-center text-sm max-w-md mt-10 text-white/60 font-light'>Project <span className='text-white'>Creation / Revision </span> Consume <span className='text-white'>5 credits</span>. You can purchase more credits to create more projects.</p>
       </div>
+
+      <Footer />
     </>
   )
 }
