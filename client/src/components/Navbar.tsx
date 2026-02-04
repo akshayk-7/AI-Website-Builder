@@ -22,9 +22,9 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <button className="active:scale-95 hover:bg-indigo-600/20 transition px-4 py-2 border border-indigo-600 rounded-md">
+            {/* <button className="active:scale-95 hover:bg-indigo-600/20 transition px-4 py-2 border border-indigo-600 rounded-md">
               Sign in
-            </button>
+            </button> */}
             <button onClick={() => navigate('/auth/signin')} className="px-6 py-1.5 max-sm:text-sm  bg-indigo-600 active:scale-95 hover:bg-indigo-700 transition rounded-md">
               Get started
             </button>

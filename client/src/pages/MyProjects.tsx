@@ -30,7 +30,7 @@ const MyProjects = () => {
       <div className='px-4 md:px-16 lg:px-24 xl:px-32'>
         {loading?(
           <div className='flex items-center justify-center h-[80vh]'>
-            <Loader2Icon className='size-7 animate-spin text-indigo-200' />
+            <Loader2Icon className='size-10 animate-spin text-sky-500' />
 
           </div>
         ) : projects.length > 0 ?(

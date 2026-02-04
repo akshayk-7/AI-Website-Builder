@@ -9,3 +9,7 @@
     @apply cursor-pointer;
   }
 }
+
+.scrollbar::-webkit-scrollbar{
+  display: none;
+}
