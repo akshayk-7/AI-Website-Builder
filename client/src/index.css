@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
+
+@layer base{
+  button{
+    @apply cursor-pointer;
+  }
+}
 
 @layer components {
   button {
@@ -18,3 +22,12 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /*Firefox*/
  } 
+
+ @keyframes fade-in{
+  0%{ opacity: 0;}
+  100%{ opacity: 1}
+ }
+
+ .animate-fade-in{
+  animation: fade-in 0.8s ease-out;
+ }
