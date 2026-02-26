@@ -1,2 +1,4 @@
 main.tex
 .gitingnore
+server/node_modules
+.env
