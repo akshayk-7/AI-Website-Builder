@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import type { Project } from '../types';
 import { iframeScript } from '../assets/assets';
 import { Phone } from 'lucide-react';
@@ -26,6 +26,29 @@ const ProjectPreview = forwardRef<ProjectPreviewRef, ProjectPreviewProps>(({proj
     tablet : 'w-[768px]',
     desktop: 'w-full'
   }
+
+  useImperativeHandle(ref, () => ({
+    getCode: () =>{
+      const doc = iframeRef.current?.contentDocument;
+      if(!doc) return undefined;
+
+      doc.querySelectorAll('.ai-selected-element,[dat-ai-selected]').forEach((el)=>{
+        el.classList.remove('ai-selected-element');
+        el.removeAttribute('data-ai-selected');
+        (el as HTMLElement).style.outline = '';
+      })
+    // remove injected style 
+      const previewStyle = doc.getElementById('ai-preview-style');
+      if(previewStyle) previewStyle.remove();
+
+      const previewScript =  doc.getElementById('ai-preview-script');
+      if(previewScript) previewScript.remove()
+
+        // serialize clean HTNL
+        const html = doc.documentElement.outerHTML;
+        return html;
+    }
+  }))
 
   useEffect(()=>{
     const handleMessage = (event: MessageEvent )=>{
